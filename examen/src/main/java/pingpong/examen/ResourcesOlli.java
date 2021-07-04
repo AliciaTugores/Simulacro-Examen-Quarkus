@@ -42,7 +42,7 @@ public class ResourcesOlli {
                 Response.status(Response.Status.OK).entity(usuaria).build();
     }
 
-    //caso test 4
+    //caso test 4 y 5
     @POST 
     @Path("/ordena")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -55,5 +55,12 @@ public class ResourcesOlli {
                 Response.status(Response.Status.NOT_FOUND).build(); 
     }
 
-
+    //caso test 6
+    @GET 
+    @Path("/pedidos/{usuaria}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Orden> pedidos(@PathParam("usuaria") String usuaria){
+        return service.cargaOrden(usuaria);
+    }
 }

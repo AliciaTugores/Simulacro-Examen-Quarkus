@@ -141,26 +141,26 @@ public class ResourcesTest {
             .statusCode(404);
     }
 
-//     /**
-//      * Obten los pedidos de una usuaria mediante
-//      * una peticion GET en el endpoint:
-//      *      /pedidos/{usuaria}
-//      */
+    /**
+     * Obten los pedidos de una usuaria mediante
+     * una peticion GET en el endpoint:
+     *      /pedidos/{usuaria}
+     */
 
-//     @Test
-//     public void test_pedidos_usuaria() {             
+    @Test
+    public void test_pedidos_usuaria() {             
 
-//         List<Map<String, Object>> pedidos = 
-//             given()
-//                 .contentType(ContentType.JSON)
-//             .when()
-//                 .get("/pedidos/{usuaria}", "Hermione")
-//                 .as(new TypeRef<List<Map<String, Object>>>() {});
+        List<Map<String, Object>> pedidos = 
+            given()
+                .contentType(ContentType.JSON)
+            .when()
+                .get("/pedidos/{usuaria}", "Hermione")
+                .as(new TypeRef<List<Map<String, Object>>>() {});
         
-//         Assertions.assertThat(pedidos).hasSize(1);
-//         Assertions.assertThat(pedidos.get(0).get("user")).hasFieldOrPropertyWithValue("nombre", "Hermione");
-//         Assertions.assertThat(pedidos.get(0).get("item")).hasFieldOrPropertyWithValue("nombre", "+5 Dexterity Vest");
-//     }
+        Assertions.assertThat(pedidos).hasSize(1);
+        Assertions.assertThat(pedidos.get(0).get("user")).hasFieldOrPropertyWithValue("nombre", "Hermione");
+        Assertions.assertThat(pedidos.get(0).get("item")).hasFieldOrPropertyWithValue("nombre", "+5 Dexterity Vest");
+    }
 
 //      /**
 //      * La peticion 
