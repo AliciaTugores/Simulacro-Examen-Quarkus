@@ -3,6 +3,8 @@ package pingpong.examen;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
+import javax.transaction.Transactional;
+import javax.persistence.PersistenceContext;
 
 import javax.enterprise.context.ApplicationScoped;
 import pingpong.examen.Entidades.*;
@@ -32,6 +34,22 @@ public class ServiceOlli {
         }
         else{
             return pedidos;
+        }
+    }
+
+    //caso test 11, 12, 13 y 14
+    @Transactional
+    public Orden comanda(String nombre_usuaria, String nombre_item){
+        Optional<Usuaria> user = Usuaria.find("user_nom", nombre_usuaria).firstResultOptional();
+        Optional<Item> item = Item.find("item_nom", nombre_item).firstResultOptional();
+
+        if (user.isPresent() && item.isPresent()){
+           Orden pedido = new Orden(user.get(), item.get());
+           pedido.persist();
+           return pedido;
+        }
+        else{
+            return null;
         }
     }
 }
