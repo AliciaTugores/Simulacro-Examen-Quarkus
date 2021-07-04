@@ -18,9 +18,11 @@ import pingpong.examen.Entidades.*;
 @Path("/")
 public class ResourcesOlli {
 
+    //caso test 1
     @Inject 
     ServiceOlli service;
 
+    //caso test 2
     @GET 
     @Path("/wellcome")
     @Consumes(MediaType.TEXT_PLAIN)
@@ -29,5 +31,15 @@ public class ResourcesOlli {
         return "Wellcome Ollivanders!";
     }
 
+    //caso test 3
+    @GET
+    @Path("/usuaria/{nombre}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response usuaria(@PathParam("nombre") String nombre){
+        Usuaria usuaria = service.cargaUsuaria(nombre);
+        return usuaria.getNombre().isEmpty() ?
+                Response.status(Response.Status.NOT_FOUND).build() : 
+                Response.status(Response.Status.OK).entity(usuaria).build();
+    }
 
 }
