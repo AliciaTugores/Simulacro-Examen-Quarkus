@@ -53,5 +53,16 @@ public class ServiceOlli {
         }
     }
 
-
+    //caso test 15, 16 y 17
+    @Transactional
+    public List<Orden> comandaMultiple(String nombre_usuaria, List<String> items){
+        List<Orden> pedidos = new ArrayList<Orden>();
+        for (String item  : items) {
+            Orden pedido = comanda(nombre_usuaria, item);
+            if (pedido != null){
+                pedidos.add(pedido);
+            }
+        }
+        return pedidos;
+    }
 }
