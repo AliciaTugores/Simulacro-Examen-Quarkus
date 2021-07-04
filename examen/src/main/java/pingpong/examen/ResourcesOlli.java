@@ -20,4 +20,14 @@ public class ResourcesOlli {
 
     @Inject 
     ServiceOlli service;
+
+    @GET 
+    @Path("/wellcome")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String wellcome() {
+        return "Wellcome Ollivanders!";
+    }
+
+
 }
